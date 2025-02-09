@@ -1,40 +1,23 @@
 "use server";
 
 import { auth } from "@/auth";
-import { SignInButton } from "./components/sign-in-button";
-import Image from "next/image";
+import { redirect } from "next/navigation";
 
-export default async function Home() {
-
+export default async function LandingPage() {
   const session = await auth();
-  console.log(session)
 
-  if(session?.user) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-        <h1 className="text-4xl font-bold text-blue-600 mb-4">
-          NextAuth v5 project using NextJS
-        </h1>
-        <p className="text-xl text-gray-700 mb-6">
-          You are signed in as {session.user.email}
-        </p>
-        { session.user.image &&
-          <Image 
-            src={session.user.image || "/default-image.png"}
-            alt={session.user.name || "User Image"}
-            width={100}
-            height={100}
-            className="rounded-full"
-          />
-        }
-      </div>
-    );
+  if (session?.user) {
+    redirect("/dashboard");
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-      <p className="text-xl text-gray-700 mb-6">You are not Signed In</p>
-      <SignInButton />
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-tl from-green-100 to-green-300 p-4">
+      <div className="bg-white p-8 rounded-lg shadow-lg text-center space-y-6">
+        <h1 className="text-4xl font-bold mb-4">Welcome to Roadmap Creator</h1>
+        <p className="mb-6 text-lg max-w-xl text-center">
+          Generate your personalized roadmap for the day with the help of Gemini AI. Stay organized, set your goals, and track your progress!
+        </p>
+      </div>
     </div>
   );
 }
