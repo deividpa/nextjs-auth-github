@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { SignInButton } from "../auth/sign-in-button";
 import { SignOutButton } from "../auth/sign-out-button";
+import { SignInWithGoogleButton } from "../auth/sign-in-google";
 
 export function Header() {
   const { data: session, status } = useSession();
@@ -36,7 +37,10 @@ export function Header() {
             {status === "loading" ? null : session ? (
               <SignOutButton />
             ) : (
-              <SignInButton />
+              <>
+                <SignInButton />
+                <SignInWithGoogleButton />
+              </>
             )}
           </div>
         </div>
