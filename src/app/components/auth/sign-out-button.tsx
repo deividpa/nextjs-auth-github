@@ -1,20 +1,20 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { logout } from "@/lib/actions/auth";
+import { signOut } from "next-auth/react";
 
 export const SignOutButton = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const router = useRouter();
 
   const handleSignOut = async () => {
     if (isLoading) return;
     setIsLoading(true);
     
     try {
-      await logout();
-      router.refresh();
+      await signOut({
+        redirect: true,
+        callbackUrl: "/"
+      });
     } catch (error) {
       console.error("Error al cerrar sesión:", error);
       setIsLoading(false);
