@@ -28,7 +28,6 @@ export default function CreateRoadmapForm() {
         return;
       }
 
-      // Refresh the page to show the new roadmap
       router.refresh();
       setTitle("");
       setIsPublic(false);
