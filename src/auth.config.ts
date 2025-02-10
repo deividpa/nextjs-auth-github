@@ -1,8 +1,9 @@
 import GitHub from "next-auth/providers/github";
+import Google from "next-auth/providers/google";
 import type { NextAuthConfig } from "next-auth";
 
 const authConfig: NextAuthConfig = {
-  providers: [GitHub],
+  providers: [GitHub, Google],
   secret: process.env.AUTH_SECRET,
   callbacks: {
     async session({ session, token }) {
