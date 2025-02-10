@@ -33,3 +33,37 @@ export async function createRoadmap(userId: string, title: string, isPublic = fa
 
   return roadmap;
 }
+
+export async function forkRoadmap(userId: string, originalRoadmapId: string) {
+  // Get the original roadmap with its items to fork
+  const original = await prisma.roadmap.findUnique({
+    where: { id: originalRoadmapId },
+    include: { items: true },
+  });
+  if (!original) {
+    throw new Error("Original roadmap not found");
+  }
+  
+  if (!original.isPublic) {
+    throw new Error("It is not possible to fork a private roadmap");
+  }
+  
+  // Create the new roadmap with the same title, description, and items
+  const newRoadmap = await prisma.roadmap.create({
+    data: {
+      title: original.title,
+      description: original.description,
+      isPublic: false,
+      user: { connect: { id: userId } },
+      items: {
+        create: original.items.map((item) => ({
+          content: item.content,
+          order: item.order,
+          status: item.status,
+        })),
+      },
+    },
+    include: { items: true },
+  });
+  return newRoadmap;
+}
