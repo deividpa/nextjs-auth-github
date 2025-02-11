@@ -6,6 +6,7 @@ export interface Roadmap {
   description: string | null;
   isPublic: boolean;
   userId: string;
+  forkedFromId: string | null;
   createdAt: Date;
   updatedAt: Date;
   items?: RoadmapItem[];
