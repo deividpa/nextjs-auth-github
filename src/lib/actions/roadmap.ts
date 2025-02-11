@@ -55,6 +55,7 @@ export async function forkRoadmap(userId: string, originalRoadmapId: string) {
       description: original.description,
       isPublic: false,
       user: { connect: { id: userId } },
+      forkedFrom: { connect: { id: original.id } },
       items: {
         create: original.items.map((item) => ({
           content: item.content,
