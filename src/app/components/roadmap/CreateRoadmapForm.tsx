@@ -40,7 +40,7 @@ export default function CreateRoadmapForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 p-4 border rounded-md shadow">
+    <form onSubmit={handleSubmit} className="mb-6 p-4 border-2 border-slate-400">
       <h2 className="text-xl font-semibold mb-2">Crear Nuevo Roadmap</h2>
       <div className="mb-4">
         <label className="block font-medium mb-1" htmlFor="title">
