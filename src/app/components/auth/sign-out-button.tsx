@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { signOut } from "next-auth/react";
+import { FiLogOut, FiLoader } from "react-icons/fi";
 
 export const SignOutButton = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -25,11 +26,21 @@ export const SignOutButton = () => {
     <button
       onClick={handleSignOut}
       disabled={isLoading}
-      className={`bg-red-500 text-white px-4 py-2 rounded shadow hover:bg-red-600 focus:outline-none transition duration-150 ${
+      className={`group flex items-center border border-gray-200 text-white px-4 py-2 rounded shadow-sm hover:bg-gray-50 hover:text-gray-900 focus:outline-none transition duration-150 ${
         isLoading ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
-      {isLoading ? "Signing Out..." : "Sign Out"}
+      {isLoading ? (
+        <>
+          <FiLoader className="mr-2 text-xl animate-spin" />
+          Signing Out...
+        </>
+      ) : (
+        <>
+          <FiLogOut className="mr-2 text-xl" />
+          Sign Out
+        </>
+      )}
     </button>
   );
 };
