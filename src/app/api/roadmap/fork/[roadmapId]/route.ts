@@ -9,11 +9,12 @@ export async function POST(
 ) {
   // Check if the user is authenticated
   const session = await auth();
-  if (!session || !session.user || !session.user.id) {
+  if (!session?.user?.id) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
   
-  const { roadmapId } = params;
+  const resolvedParams = await params;
+  const { roadmapId } = resolvedParams;
   
   // Check if the roadmap exists and is public
   const original = await prisma.roadmap.findUnique({
