@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { Roadmap, RoadmapItem } from "@/types/roadmap";
-import router from "next/router";
+import { useRouter } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 interface RoadmapDetailProps {
   roadmap: Roadmap & { items: RoadmapItem[] };
@@ -10,7 +11,10 @@ interface RoadmapDetailProps {
 }
 
 export default function RoadmapDetail({ roadmap, isOwner }: RoadmapDetailProps) {
-  console.log(roadmap);
+
+  const router = useRouter();
+  const { data: session } = useSession();
+
   // Store the items in a local state to update the status of each item
   const [items, setItems] = useState(roadmap.items);
   const [loadingItem, setLoadingItem] = useState<string | null>(null);
@@ -89,6 +93,13 @@ export default function RoadmapDetail({ roadmap, isOwner }: RoadmapDetailProps) 
           <button
             className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-purple-600 hover:to-blue-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 shadow-lg"
             onClick={async () => {
+              if (!session?.user) {
+                if (confirm("Debes iniciar sesión para hacer fork. ¿Ir al login?")) {
+                  router.push("/auth/login");
+                }
+                return;
+              }
+
               try {
                 const res = await fetch(`/api/roadmap/fork/${roadmap.id}`, {
                   method: "POST"
