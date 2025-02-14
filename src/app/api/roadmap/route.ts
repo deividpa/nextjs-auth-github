@@ -12,7 +12,6 @@ export async function POST(request: Request) {
   const { title, isPublic } = await request.json();
   
   try {
-    console.log("Creating roadmap...", session);
     const userId = session.user.id;
     if (!userId) {
       return NextResponse.json({ message: "User ID is missing" }, { status: 400 });
