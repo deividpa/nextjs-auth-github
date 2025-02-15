@@ -10,32 +10,32 @@ export function Header() {
   const { data: session, status } = useSession();
 
   return (
-    <header className="bg-gradient-to-t from-[#494D5F] to-[#2e2f35] shadow-lg">
+    <header className="border-b-2 border-accent shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Nav Section */}
           <div className="flex items-center space-x-6">
             <Link href="/">
-              <span className="text-2xl font-bold text-white cursor-pointer">
+              <span className="text-2xl font-bold text-primary cursor-pointer">
                 Roadmap Creator
-              </span>
-            </Link>
-
-            <Link href="/roadmap">
-              <span className="flex items-center text-white hover:text-gray-200 transition cursor-pointer">
-                <RiRoadMapLine className="mr-1 text-xl" />
-                Public Roadmaps
               </span>
             </Link>
 
             {session && (
               <Link href="/dashboard">
-                <span className="flex items-center text-white hover:text-gray-200 transition cursor-pointer">
+                <span className="flex items-center text-secondary hover:text-primary-hover transition cursor-pointer">
                   <RiDashboardLine className="mr-1 text-xl" />
                   Dashboard
                 </span>
               </Link>
             )}
+
+            <Link href="/roadmap">
+              <span className="flex items-center text-secondary hover:text-primary-hover transition cursor-pointer">
+                <RiRoadMapLine className="mr-1 text-xl" />
+                Public Roadmaps
+              </span>
+            </Link>
           </div>
 
           {/* Auth Section */}
