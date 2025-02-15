@@ -50,7 +50,7 @@ export default function RoadmapDetail({ roadmap, isOwner }: RoadmapDetailProps) 
   return (
     <div className="px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{roadmap.title}</h1>
-      {roadmap.description && <p className="text-xl text-purple-700 mb-8">{roadmap.description}</p>}
+      {roadmap.description && <p className="text-xl text-primary mb-8">{roadmap.description}</p>}
 
       <div className="space-y-6">
         {items
@@ -58,7 +58,7 @@ export default function RoadmapDetail({ roadmap, isOwner }: RoadmapDetailProps) 
           .map((item) => (
             <div
               key={item.id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl border-l-8 border-purple-400"
+              className="bg-white shadow-lg rounded-lg overflow-hidden transition-all duration-300 hover:shadow-xl border-l-8 border-secondary"
             >
               <div className="p-6">
                 <div className="w-full">
@@ -72,7 +72,7 @@ export default function RoadmapDetail({ roadmap, isOwner }: RoadmapDetailProps) 
                       <select
                         value={item.status}
                         onChange={(e) => handleStatusChange(item.id, e.target.value)}
-                        className="border rounded-md p-2 bg-purple-200 text-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        className="border rounded-md p-2 bg-neutral text-primary focus:outline-none focus:ring-2 focus:ring-secondary"
                         disabled={loadingItem === item.id}
                       >
                         <option value="NOT_STARTED">No iniciado</option>
