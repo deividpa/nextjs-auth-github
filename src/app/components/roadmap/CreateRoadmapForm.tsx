@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Button } from "../ui/Button";
 
 export default function CreateRoadmapForm() {
   const [title, setTitle] = useState("");
@@ -41,7 +42,7 @@ export default function CreateRoadmapForm() {
 
   return (
     <form onSubmit={handleSubmit} className="mb-6 p-4 border-2 border-slate-400">
-      <h2 className="text-xl font-semibold mb-2">Crear Nuevo Roadmap</h2>
+      <h2 className="text-primary text-xl font-semibold mb-2">Crear Nuevo Roadmap</h2>
       <div className="mb-4">
         <label className="block font-medium mb-1" htmlFor="title">
           Título:
@@ -65,13 +66,14 @@ export default function CreateRoadmapForm() {
         />
         <label htmlFor="isPublic">Hacer público</label>
       </div>
-      <button
+      <Button
         type="submit"
-        disabled={loading}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+        loading={loading}
+        variant="outline"
+        className="mt-4"
       >
-        {loading ? "Creando..." : "Crear Roadmap"}
-      </button>
+        Crear Roadmap
+      </Button>
     </form>
   );
 }
