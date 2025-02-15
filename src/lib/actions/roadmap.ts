@@ -5,8 +5,14 @@ export async function createRoadmap(userId: string, title: string, isPublic = fa
 
   const geminiService = new GeminiService();
 
-  // Check if the user has reached the maximum number of roadmaps (3)
-  const count = await prisma.roadmap.count({ where: { userId } });
+  // Check if the user has reached the maximum number of original roadmaps (3)
+  const count = await prisma.roadmap.count({ 
+    where: { 
+      userId,
+      forkedFromId: null, // Only original roadmaps (not forks)
+    },
+  });
+
   if (count >= 3) {
     throw new Error('You have reached the maximum number of roadmaps.');
   }
