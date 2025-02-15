@@ -15,8 +15,8 @@ export default function RootLayout({
       >
         <Providers>
           <Header />
-          <main className="flex-grow bg-gradient-to-tl from-gray-100 to-gray-300">
-            <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-6">
+          <main className="flex-grow bg-gradient-to-b from-gray-100 to-gray-300">
+            <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
               {children}
             </div>
           </main>
