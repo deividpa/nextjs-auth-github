@@ -9,14 +9,12 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#1E293B",
-        textPrimary: "#F1F5F9",
-        primary: "#3B82F6",
-        primaryHover: "#2563EB",
-        secondary: "#64748B",
-        secondaryHover: "#475569",
-        border: "#94A3B8",
-        error: "#EF4444",
+
+        primary: "#27445D",     // color superior
+        secondary: "#497D74",   //color intermedio
+        accent: "#71BBB2",      // otro color intermedio
+        neutral: "#EFE9D5",     // color claro
+        "primary-hover": "#1d3347",
       },
     },
   },
