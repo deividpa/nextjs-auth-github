@@ -3,7 +3,7 @@ import { FaLinkedin, FaGithub } from "react-icons/fa";
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-b from-[#494D5F] to-[#2e2f35] shadow-lg text-white py-6">
+    <footer className="bg-gradient-to-b from-[#416d66] to-[#497D74] shadow-lg text-white py-6">
       <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between">
         <p className="text-sm">
           &copy; {new Date().getFullYear()} Roadmap Creator. Todos los derechos
