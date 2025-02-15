@@ -26,7 +26,7 @@ export const SignOutButton = () => {
     <button
       onClick={handleSignOut}
       disabled={isLoading}
-      className={`group flex items-center border border-gray-200 text-white px-4 py-2 rounded shadow-sm hover:bg-gray-50 hover:text-gray-900 focus:outline-none transition duration-150 ${
+      className={`group flex items-center border border-gray-200 text-secondary px-4 py-2 rounded shadow-sm hover:text-primary-hover focus:outline-none transition duration-150 ${
         isLoading ? "opacity-50 cursor-not-allowed" : ""
       }`}
     >
