@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/prisma/prisma";
 import { auth } from "@/auth";
-import { RoadmapItemStatus } from "@prisma/client";
+import { RoadmapItemStatusSchema } from "@/lib/services/ai/schemas/roadmapItemStatus.schema";
 
 export async function PATCH(request: NextRequest) {
   try {
@@ -22,7 +22,8 @@ export async function PATCH(request: NextRequest) {
     const { status } = await request.json();
 
     // Check if the status is a valid RoadmapItemStatus
-    if (!Object.values(RoadmapItemStatus).includes(status)) {
+    const parseResult = RoadmapItemStatusSchema.safeParse(status);
+    if (!parseResult.success) {
       return NextResponse.json({ message: "Invalid State" }, { status: 400 });
     }
 
