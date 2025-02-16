@@ -3,20 +3,16 @@ import { auth } from '@/auth';
 import RoadmapDetail from '@/app/components/roadmap/RoadmapDetail';
 
 interface PageProps {
-  params: { roadmapId?: string };
+  params: Promise<{ roadmapId: string }>;
 }
 
 export default async function RoadmapPage({ params }: PageProps) {
+  const { roadmapId } = await params;
 
-  
-  const resolvedParams = await params;
-
-  if (!resolvedParams?.roadmapId) {
+  if (!roadmapId) {
     return <p className="p-6 text-center">Invalid roadmap ID</p>;
   }
 
-  const roadmapId = resolvedParams.roadmapId;
-  
   const session = await auth();
 
   const roadmap = await prisma.roadmap.findUnique({
