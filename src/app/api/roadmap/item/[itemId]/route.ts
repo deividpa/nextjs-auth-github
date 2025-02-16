@@ -1,12 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/prisma/prisma";
 import { auth } from "@/auth";
 import { RoadmapItemStatus } from "@prisma/client";
 
-export async function PATCH(
-  req: Request,
-  { params }: { params: { itemId: string } }
-) {
+export async function PATCH(request: NextRequest) {
   try {
     // Check if the user is authenticated
     const session = await auth();
@@ -14,8 +11,15 @@ export async function PATCH(
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
 
-    const { itemId } = params;
-    const { status } = await req.json();
+    // Extract itemId from the URL
+    const url = new URL(request.url);
+    const itemId = url.pathname.split('/').pop();
+
+    if (!itemId) {
+      return NextResponse.json({ message: "Item ID is required" }, { status: 400 });
+    }
+
+    const { status } = await request.json();
 
     // Check if the status is a valid RoadmapItemStatus
     if (!Object.values(RoadmapItemStatus).includes(status)) {
