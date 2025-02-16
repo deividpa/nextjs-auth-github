@@ -1,19 +1,22 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { forkRoadmap } from "@/lib/actions/roadmap";
 import { prisma } from "@/prisma/prisma";
 import { auth } from "@/auth";
 
-export async function POST(
-  request: Request,
-  context: { params: { roadmapId: string } }
-) {
+export async function POST(request: NextRequest) {
   // Check if the user is authenticated
   const session = await auth();
   if (!session?.user?.id) {
     return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
   }
   
-  const { roadmapId } = await Promise.resolve(context.params);
+  // Extract roadmapId from the URL
+  const url = new URL(request.url);
+  const roadmapId = url.pathname.split('/').pop();
+
+  if (!roadmapId) {
+    return NextResponse.json({ message: "Roadmap ID is required" }, { status: 400 });
+  }
   
   // Check if the roadmap exists and is public
   const original = await prisma.roadmap.findUnique({
