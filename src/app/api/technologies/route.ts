@@ -46,7 +46,7 @@ export async function GET() {
     {
       name: "Gemini API",
       description: "Google's AI model integration that powers the intelligent roadmap generation feature, creating personalized learning paths.",
-      logo: "https://www.gstatic.com/lamda/images/gemini_logo_color_72.svg",
+      logo: "https://upload.wikimedia.org/wikipedia/commons/8/8a/Google_Gemini_logo.svg",
       category: "AI Service",
       level: 1,
       documentation: "https://ai.google.dev/docs"
