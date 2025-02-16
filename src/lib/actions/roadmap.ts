@@ -13,7 +13,7 @@ export async function createRoadmap(userId: string, title: string, isPublic = fa
     },
   });
 
-  if (count >= 3) {
+  if (count >= 5) {
     throw new Error('You have reached the maximum number of roadmaps.');
   }
 
