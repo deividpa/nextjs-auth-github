@@ -6,7 +6,7 @@ import { Button } from "../ui/Button";
 
 export default function CreateRoadmapForm() {
   const [title, setTitle] = useState("");
-  const [isPublic, setIsPublic] = useState(false);
+  const [isPrivate, setIsPrivate] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
@@ -20,7 +20,7 @@ export default function CreateRoadmapForm() {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ title, isPublic })
+        body: JSON.stringify({ title, isPublic: !isPrivate })
       });
 
       if (!res.ok) {
@@ -31,7 +31,7 @@ export default function CreateRoadmapForm() {
 
       router.refresh();
       setTitle("");
-      setIsPublic(false);
+      setIsPrivate(false);
     } catch (error) {
       console.error("Error creating roadmap:", error);
       alert("Ocurrió un error al crear el roadmap.");
@@ -59,12 +59,12 @@ export default function CreateRoadmapForm() {
       <div className="mb-4 flex items-center">
         <input
           type="checkbox"
-          id="isPublic"
-          checked={isPublic}
-          onChange={(e) => setIsPublic(e.target.checked)}
+          id="isPrivate"
+          checked={isPrivate}
+          onChange={(e) => setIsPrivate(e.target.checked)}
           className="mr-2"
         />
-        <label htmlFor="isPublic">Hacer público</label>
+        <label htmlFor="isPrivate">Hacer privado</label>
       </div>
       <Button
         type="submit"
