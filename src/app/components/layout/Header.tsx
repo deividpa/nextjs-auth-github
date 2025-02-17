@@ -10,11 +10,11 @@ export function Header() {
   const { data: session, status } = useSession();
 
   return (
-    <header className="border-b-2 border-accent shadow-lg">
+    <header className="border-b-2 border-primary shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Nav Section */}
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-3 md:space-x-6">
             <Link href="/">
               <span className="text-2xl font-bold text-primary cursor-pointer">
                 Roadmap Creator
@@ -33,7 +33,7 @@ export function Header() {
             <Link href="/roadmap">
               <span className="flex items-center text-secondary hover:text-primary-hover transition cursor-pointer">
                 <RiRoadMapLine className="mr-1 text-xl" />
-                Public Roadmaps
+                  <span className="hidden sm:inline">Public</span>Roadmaps
               </span>
             </Link>
           </div>
@@ -44,9 +44,9 @@ export function Header() {
               <SignOutButton />
             ) : (
               <Link href="/auth/login">
-                <button className="flex items-center bg-white text-blue-600 px-4 py-2 rounded shadow hover:bg-gray-100 transition">
+                <button title="Sign In" className="flex items-center bg-white text-secondary px-4 py-2 rounded shadow hover:bg-gray-100 transition">
                   <FiLogIn className="mr-2 text-lg" />
-                  Sign In
+                  <span className="hidden sm:inline">Sign In</span>
                 </button>
               </Link>
             )}
