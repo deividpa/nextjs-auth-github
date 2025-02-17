@@ -75,9 +75,9 @@ export default function RoadmapDetail({ roadmap, isOwner }: RoadmapDetailProps) 
                         className="border rounded-md p-2 bg-neutral text-primary focus:outline-none focus:ring-2 focus:ring-secondary"
                         disabled={loadingItem === item.id}
                       >
-                        <option value="NOT_STARTED">No iniciado</option>
-                        <option value="IN_PROGRESS">En progreso</option>
-                        <option value="DONE">Completado</option>
+                        <option value="NOT_STARTED">Not Started</option>
+                        <option value="IN_PROGRESS">In Progress</option>
+                        <option value="DONE">Done</option>
                       </select>
                     )}
                   </div>
@@ -91,10 +91,10 @@ export default function RoadmapDetail({ roadmap, isOwner }: RoadmapDetailProps) 
       {!isOwner && roadmap.isPublic && (
         <div className="mt-12 text-center">
           <button
-            className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:from-purple-600 hover:to-blue-600 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 shadow-lg"
+            className="bg-gradient-to-b from-[#a78a7f] to-[#4d3d37] text-white px-8 py-4 rounded-full text-lg font-semibold transition-opacity duration-600 focus:ring-2 shadow-lg hover:opacity-90"
             onClick={async () => {
               if (!session?.user) {
-                if (confirm("Debes iniciar sesión para hacer fork. ¿Ir al login?")) {
+                if (confirm("You need to login to clone this roadmap. Do you want to login now?")) {
                   router.push("/auth/login");
                 }
                 return;
@@ -108,18 +108,18 @@ export default function RoadmapDetail({ roadmap, isOwner }: RoadmapDetailProps) 
                   const forkedRoadmap = await res.json();
 
                   router.push(`/roadmap/${forkedRoadmap.id}`);
-                  alert("Fork realizado correctamente!");
+                  alert("Roadmap cloned successfully");
                 } else {
                   const errorData = await res.json();
                   alert(errorData.message);
                 }
               } catch (error) {
-                console.error("Error al hacer fork:", error);
-                alert("Error al hacer fork");
+                console.error("Error cloning the roadmap:", error);
+                alert("Error cloning the roadmap");
               }
             }}
           >
-            Hacer fork a este roadmap
+            Clone this roadmap
           </button>
         </div>
       )}
