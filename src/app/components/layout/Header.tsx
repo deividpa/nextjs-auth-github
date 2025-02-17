@@ -33,7 +33,7 @@ export function Header() {
             <Link href="/roadmap">
               <span className="flex items-center text-secondary hover:text-primary-hover transition cursor-pointer">
                 <RiRoadMapLine className="mr-1 text-xl" />
-                  <span className="hidden sm:inline">Public</span>Roadmaps
+                  <span className="hidden sm:inline mr-1">Public</span>Roadmaps
               </span>
             </Link>
           </div>
