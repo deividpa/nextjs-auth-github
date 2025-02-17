@@ -9,16 +9,16 @@ export default function LandingPage() {
   const { data, isLoading, error } = usePublicRoadmaps(3);
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 bg-cover bg-center">
-      <div className="p-6 rounded-lg shadow-lg text-center space-y-6 bg-secondary/90 backdrop-blur-sm w-full">
-        <h1 className="text-4xl font-bold mb-4 text-white">Welcome to Roadmap Creator</h1>
-        <p className="mb-4 text-lg text-center text-white">
+    <div className="flex flex-col items-center p-4 bg-cover bg-center">
+      <div className="p-6 rounded-lg shadow-md space-y-6 bg-accent/20 backdrop-blur-sm w-full">
+        <h1 className="text-4xl font-bold mb-4">Welcome to Roadmap Creator</h1>
+        <p className="mb-4 text-lg text-primary">
           Generate your personalized roadmap for the day. Stay organized, set your goals, and track your progress!
         </p>
       </div>
 
-      <div className="w-full max-w-6xl mt-4">
-        <h2 className="text-2xl font-bold mb-4 text-primary">Last Public Roadmaps</h2>
+      <div className="w-full max-w-6xl mt-9">
+        <h2 className="text-xl font-bold mb-4 text-primary bg-accent/5 rounded-xl">Last Public Roadmaps</h2>
         {isLoading && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
             {Array.from({ length: 3 }).map((_, idx) => (
