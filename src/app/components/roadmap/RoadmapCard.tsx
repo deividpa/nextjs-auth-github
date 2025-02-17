@@ -6,6 +6,7 @@ import { Button } from "../ui/Button";
 import { FaEye } from "react-icons/fa";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { PiPath } from "react-icons/pi";
 
 
 export default function RoadmapCard({ roadmap }: { roadmap: Roadmap }) {
@@ -19,7 +20,7 @@ export default function RoadmapCard({ roadmap }: { roadmap: Roadmap }) {
 
   return (
     <div className="text-primary border rounded-md p-4 shadow hover:shadow-lg transition">
-      <h3 className="text-2xl font-bold mb-2">{roadmap.title}</h3>
+      <h3 className="text-xl font-semibold mb-2 inline-flex items-center gap-1 text-elipsis"><PiPath /> {roadmap.title}</h3>
       {roadmap.description && (
         <p className="mb-2 text-gray-700">{roadmap.description}</p>
       )}
