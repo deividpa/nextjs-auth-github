@@ -33,12 +33,11 @@ export const SignOutButton = () => {
       {isLoading ? (
         <>
           <FiLoader className="mr-2 text-xl animate-spin" />
-          Signing Out...
         </>
       ) : (
         <>
           <FiLogOut className="mr-2 text-xl" />
-          Sign Out
+          <span className="hidden sm:inline">Sign Out</span>
         </>
       )}
     </button>
