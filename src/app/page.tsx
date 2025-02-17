@@ -10,8 +10,8 @@ export default function LandingPage() {
 
   return (
     <div className="flex flex-col items-center p-4 bg-cover bg-center">
-      <div className="p-6 rounded-lg shadow-md space-y-6 bg-accent/20 backdrop-blur-sm w-full">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Roadmap Creator</h1>
+      <div className="p-6 rounded-lg shadow-md space-y-6 bg-neutral backdrop-blur-sm w-full">
+        <h1 className="text-3xl font-bold mb-4">Welcome to Roadmap Creator</h1>
         <p className="mb-4 text-lg text-primary">
           Generate your personalized roadmap for the day. Stay organized, set your goals, and track your progress!
         </p>
