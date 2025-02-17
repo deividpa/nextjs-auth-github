@@ -10,10 +10,10 @@ export default {
     extend: {
       colors: {
 
-        primary: "#27445D",     // color superior
-        secondary: "#497D74",   //color intermedio
-        accent: "#71BBB2",      // otro color intermedio
-        neutral: "#EFE9D5",     // color claro
+        primary: "#0d1b2a",     // color superior
+        secondary: "#735751",   //color intermedio
+        accent: "#a99985",      // otro color intermedio
+        neutral: "#dad2bc",     // color claro
         "primary-hover": "#1d3347",
       },
     },
