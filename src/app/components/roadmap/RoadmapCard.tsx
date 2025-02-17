@@ -1,10 +1,22 @@
+"use client";
+
 import Link from "next/link";
 import { Roadmap } from "@/types/roadmap";
 import { Button } from "../ui/Button";
 import { FaEye } from "react-icons/fa";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 export default function RoadmapCard({ roadmap }: { roadmap: Roadmap }) {
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+
+  const handleNavigation = async () => {
+    setLoading(true);
+    await router.push(`/roadmap/${roadmap.id}`);
+  };
+
   return (
     <div className="text-primary border rounded-md p-4 shadow hover:shadow-lg transition">
       <h3 className="text-2xl font-bold mb-2">{roadmap.title}</h3>
@@ -15,10 +27,12 @@ export default function RoadmapCard({ roadmap }: { roadmap: Roadmap }) {
         <Button
           variant="outline"
           className="mt-4"
+          onClick={handleNavigation}
+          loading={loading}
         >
           <span className="inline-flex items-center">
             <FaEye className="mr-2" />
-            <span>Ver detalles</span>
+            <span>View Details</span>
           </span>
         </Button>
       </Link>
