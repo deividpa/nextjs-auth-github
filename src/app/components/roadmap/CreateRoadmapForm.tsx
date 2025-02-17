@@ -34,29 +34,27 @@ export default function CreateRoadmapForm() {
       setIsPrivate(false);
     } catch (error) {
       console.error("Error creating roadmap:", error);
-      alert("Ocurrió un error al crear el roadmap.");
+      alert("There was an error creating the roadmap");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 p-4 border-2 border-slate-400">
-      <h2 className="text-primary text-xl font-semibold mb-2">Crear Nuevo Roadmap</h2>
+    <form onSubmit={handleSubmit} className="mb-6 p-4 border-2 border-secondary">
+      <h2 className="text-primary text-xl font-semibold mb-2">Create new Roadmap</h2>
       <div className="mb-4">
-        <label className="block font-medium mb-1" htmlFor="title">
-          Título:
-        </label>
         <input
           type="text"
           id="title"
-          className="w-full border p-2 rounded"
+          className="w-full border border-secondary p-2 rounded"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          placeholder="Enter the title of the roadmap: e.g. Skin Care Routine, Math Study Plan, etc."
           required
         />
       </div>
-      <div className="mb-4 flex items-center">
+      <div className="mb-2 flex items-center">
         <input
           type="checkbox"
           id="isPrivate"
@@ -64,15 +62,15 @@ export default function CreateRoadmapForm() {
           onChange={(e) => setIsPrivate(e.target.checked)}
           className="mr-2"
         />
-        <label htmlFor="isPrivate">Hacer privado</label>
+        <label htmlFor="isPrivate">Make it Private!</label>
       </div>
       <Button
         type="submit"
         loading={loading}
         variant="outline"
-        className="mt-4"
+        className="mt-2"
       >
-        Crear Roadmap
+        Create Roadmap
       </Button>
     </form>
   );
